@@ -34,5 +34,8 @@ VALUES
     1236,
     1
   );
+  
+SELECT setval('event_id_seq', (SELECT MAX(id) from "event"));
+SELECT setval('user_id_seq', (SELECT MAX(id) from "user"));
 
 COMMIT;
