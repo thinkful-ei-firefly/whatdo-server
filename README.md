@@ -1,1 +1,1 @@
-# whatdo-server
+# WhatDo API
