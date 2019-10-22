@@ -14,7 +14,7 @@ VALUES
     '$2a$10$fCWkaGbt7ZErxaxclioLteLUgg4Q3Rp09WW0s/wSLxDKYsaGYUpjG'
   );
 
-INSERT INTO "event" ("id", "name", "event_id", "user_id")
+INSERT INTO "event" ("id", "name", "fetch_id", "user_id")
 VALUES
   (
     1,
