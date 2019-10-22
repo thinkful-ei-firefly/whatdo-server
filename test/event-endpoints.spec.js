@@ -87,4 +87,8 @@ describe('Event Endpoints', function() {
         });
     });
   });
+
+  describe('GET /api/event/:event_id', () => {});
+  describe('DELETE /api/event/:event_id', () => {});
+  describe('PATCH /api/event/:event_id', () => {});
 });
