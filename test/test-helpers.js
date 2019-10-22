@@ -30,28 +30,33 @@ function makeEvents(user) {
   const events = [
     {
       id: 1,
-      name: 'original 1',
-      fetch_id: 1
+      name: 'event 1',
+      fetch_id: 1,
+      user_id: user.id
     },
     {
       id: 2,
-      name: 'original 2',
-      fetch_id: 1
+      name: 'event 2',
+      fetch_id: 1,
+      user_id: user.id
     },
     {
       id: 3,
-      name: 'original 3',
-      fetch_id: 1
+      name: 'event 3',
+      fetch_id: 1,
+      user_id: user.id
     },
     {
       id: 4,
-      name: 'original 4',
-      fetch_id: 1
+      name: 'event 4',
+      fetch_id: 1,
+      user_id: user.id
     },
     {
       id: 5,
-      name: 'original 5',
-      fetch_id: 1
+      name: 'event 5',
+      fetch_id: 1,
+      user_id: user.id
     }
   ];
 
@@ -105,10 +110,8 @@ async function seedUsersEvents(db, users, events) {
   await db.transaction(async trx => {
     await trx.into('event').insert(events);
 
-    await Promise.all([
-      trx.raw(`SELECT setval('event_id_seq', ?)`, [
-        events[events.length - 1].id
-      ])
+    await trx.raw(`SELECT setval('event_id_seq', ?)`, [
+      events[events.length - 1].id
     ]);
   });
 }
