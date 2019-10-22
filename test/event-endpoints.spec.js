@@ -19,14 +19,14 @@ describe('Event Endpoints', function() {
 
   afterEach('cleanup', () => helpers.cleanTables(db));
 
-  describe(`GET /api/event`, () => {
+  describe('GET /api/event', () => {
     beforeEach('insert users and events', () => {
       return helpers.seedUsersEvents(db, testUsers, testEvents);
     });
 
     it(`responds with 200 and user's events`, () => {
       return supertest(app)
-        .get(`/api/event`)
+        .get('/api/event')
         .set('Authorization', helpers.makeAuthHeader(testUser))
         .expect(200)
         .expect(res => {
@@ -43,7 +43,7 @@ describe('Event Endpoints', function() {
     });
   });
 
-  describe(`POST /api/event`, () => {
+  describe('POST /api/event', () => {
     beforeEach('insert users and events', () => {
       return helpers.seedUsersEvents(db, testUsers, testEvents);
     });
@@ -69,13 +69,13 @@ describe('Event Endpoints', function() {
       });
     });
 
-    it(`responds with 201 and created post when fields are correct`, () => {
+    it('responds with 201 and created post when fields are correct', () => {
       const correctPostBody = {
         name: 'New Event',
         fetch_id: 12345
       };
       return supertest(app)
-        .post(`/api/event`)
+        .post('/api/event')
         .set('Authorization', helpers.makeAuthHeader(testUser))
         .send(correctPostBody)
         .expect(201)
