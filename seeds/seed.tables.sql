@@ -4,12 +4,13 @@ TRUNCATE
   "event",
   "user";
 
-INSERT INTO "user" ("id", "username", "nickname", "password")
+INSERT INTO "user" ("id", "username", "nickname", "email", "password")
 VALUES
   (
     1,
     'demo',
     'Demo',
+    'demo@testing.com',
     -- password = "pass"
     '$2a$10$fCWkaGbt7ZErxaxclioLteLUgg4Q3Rp09WW0s/wSLxDKYsaGYUpjG'
   );

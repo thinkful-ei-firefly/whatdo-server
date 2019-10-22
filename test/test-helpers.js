@@ -15,12 +15,14 @@ function makeUsersArray() {
       id: 1,
       username: 'test-user-1',
       nickname: 'Test user 1',
+      email: 'user1@testing.com',
       password: 'password'
     },
     {
       id: 2,
       username: 'test-user-2',
       nickname: 'Test user 2',
+      email: 'user2@testing.com',
       password: 'password'
     }
   ];
