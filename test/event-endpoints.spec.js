@@ -7,6 +7,7 @@ describe.only('Event Endpoints', function() {
   const testUsers = helpers.makeUsersArray();
   const [testUser] = testUsers;
   const testEvents = helpers.makeEvents(testUser);
+  const [testEvent] = testEvents;
 
   before('make knex instance', () => {
     db = helpers.makeKnexInstance();
@@ -88,37 +89,24 @@ describe.only('Event Endpoints', function() {
     });
   });
 
-  describe.skip('GET /api/event/:event_id', () => {
+  describe('GET /api/event/:event_id', () => {
     beforeEach('insert users and events', () => {
       return helpers.seedUsersEvents(db, testUsers, testEvents);
     });
 
     it(`responds with 200 and correct event`, () => {
-      const testEvent = testEvents[0];
-      const event_id = testEvents.indexOf(testEvent) + 1;
+      const eventId = testEvent.id;
       return supertest(app)
-        .get(`/api/event/${event_id}`)
+        .get(`/api/event/${eventId}`)
         .set('Authorization', helpers.makeAuthHeader(testUser))
         .expect(200)
         .expect(res => {
-          expect(res.body).to.have.keys('event');
-
-          const event = res.body.event;
+          const event = res.body;
           expect(event).to.have.property('id', testEvent.id);
           expect(event).to.have.property('name', testEvent.name);
           expect(event).to.have.property('fetch_id', testEvent.fetch_id);
-          expect(event).to.have.property('user_id', testEvent.user_id);
+          // expect(event).to.have.property('user_id', userEvent.user_id);
         });
     });
-  });
-
-  describe.skip('DELETE /api/event/:event_id', () => {});
-  beforeEach('insert users and events', () => {
-    return helpers.seedUsersEvents(db, testUsers, testEvents);
-  });
-
-  describe.skip('PATCH /api/event/:event_id', () => {});
-  beforeEach('insert users and events', () => {
-    return helpers.seedUsersEvents(db, testUsers, testEvents);
   });
 });
