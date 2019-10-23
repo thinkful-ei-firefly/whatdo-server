@@ -105,7 +105,7 @@ describe.only('Event Endpoints', function() {
           expect(event).to.have.property('id', testEvent.id);
           expect(event).to.have.property('name', testEvent.name);
           expect(event).to.have.property('fetch_id', testEvent.fetch_id);
-          // expect(event).to.have.property('user_id', userEvent.user_id);
+          expect(event).to.have.property('user_id', testEvent.user_id);
         });
     });
   });

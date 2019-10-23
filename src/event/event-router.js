@@ -8,7 +8,8 @@ const jsonParser = express.json();
 const serializeEvent = event => ({
   id: event.id,
   name: xss(event.name),
-  fetch_id: event.fetch_id
+  fetch_id: event.fetch_id,
+  user_id: event.user_id
 });
 
 eventRouter.use(requireAuth);
