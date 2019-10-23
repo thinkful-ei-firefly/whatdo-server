@@ -6,7 +6,7 @@ describe('Auth Endpoints', function() {
   let db;
 
   const testUsers = helpers.makeUsersArray();
-  const testUser = testUsers[0];
+  const [testUser] = testUsers;
 
   before('make knex instance', () => {
     db = helpers.makeKnexInstance();

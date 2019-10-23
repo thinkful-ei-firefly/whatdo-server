@@ -1,7 +1,7 @@
 const app = require('../src/app');
 const helpers = require('./test-helpers');
 
-describe('Event Endpoints', function() {
+describe.only('Event Endpoints', function() {
   let db;
 
   const testUsers = helpers.makeUsersArray();
@@ -88,7 +88,37 @@ describe('Event Endpoints', function() {
     });
   });
 
-  describe('GET /api/event/:event_id', () => {});
-  describe('DELETE /api/event/:event_id', () => {});
-  describe('PATCH /api/event/:event_id', () => {});
+  describe.skip('GET /api/event/:event_id', () => {
+    beforeEach('insert users and events', () => {
+      return helpers.seedUsersEvents(db, testUsers, testEvents);
+    });
+
+    it(`responds with 200 and correct event`, () => {
+      const testEvent = testEvents[0];
+      const event_id = testEvents.indexOf(testEvent) + 1;
+      return supertest(app)
+        .get(`/api/event/${event_id}`)
+        .set('Authorization', helpers.makeAuthHeader(testUser))
+        .expect(200)
+        .expect(res => {
+          expect(res.body).to.have.keys('event');
+
+          const event = res.body.event;
+          expect(event).to.have.property('id', testEvent.id);
+          expect(event).to.have.property('name', testEvent.name);
+          expect(event).to.have.property('fetch_id', testEvent.fetch_id);
+          expect(event).to.have.property('user_id', testEvent.user_id);
+        });
+    });
+  });
+
+  describe.skip('DELETE /api/event/:event_id', () => {});
+  beforeEach('insert users and events', () => {
+    return helpers.seedUsersEvents(db, testUsers, testEvents);
+  });
+
+  describe.skip('PATCH /api/event/:event_id', () => {});
+  beforeEach('insert users and events', () => {
+    return helpers.seedUsersEvents(db, testUsers, testEvents);
+  });
 });
