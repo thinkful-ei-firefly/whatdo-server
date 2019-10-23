@@ -83,13 +83,21 @@ eventRouter
     try {
       const { name, fetch_id } = req.body;
       const user_id = req.user.id;
-      const patchedEvent = { name, fetch_id, user_id };
+      const patchedEvent = {};
 
-      for (const [key, value] of Object.entries(patchedEvent))
-        if (!value)
-          return res.status(400).json({
-            error: { message: `Missing '${key}' in request body` }
-          });
+      if (!name && !fetch_id) {
+        return res.status(400).json({
+          error: { message: `Input must not be null` }
+        });
+      }
+
+      if (name) {
+        patchedEvent.name = name;
+      }
+
+      if (fetch_id) {
+        patchedEvent.fetch_id = fetch_id;
+      }
 
       const patch = await EventService.patchEvent(
         req.app.get('db'),

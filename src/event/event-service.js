@@ -33,7 +33,11 @@ const EventService = {
   patchEvent(db, id, newEventFields) {
     return db('event')
       .where({ id })
-      .update(newEventFields);
+      .update(newEventFields)
+      .returning('*')
+      .then(rows => {
+        return rows[0];
+      });
   }
 };
 

@@ -109,4 +109,59 @@ describe.only('Event Endpoints', function() {
         });
     });
   });
+
+  describe('DELETE /api/event/:event_id', () => {
+    beforeEach('insert users and events', () => {
+      return helpers.seedUsersEvents(db, testUsers, testEvents);
+    });
+
+    it(`responds with 200 and removes the event from the database`, () => {
+      const eventId = testEvent.id;
+      return supertest(app)
+        .del(`/api/event/${eventId}`)
+        .set('Authorization', helpers.makeAuthHeader(testUser))
+        .expect(200);
+    });
+  });
+
+  describe('PATCH /api/event/:event_id', () => {
+    beforeEach('insert users and events', () => {
+      return helpers.seedUsersEvents(db, testUsers, testEvents);
+    });
+
+    it(`responds with 400 and an error message with no new input`, () => {
+      const eventId = testEvent.id;
+      const badPatch = {
+        notName: 'nice try',
+        notFetch: 123
+      };
+
+      return supertest(app)
+        .patch(`/api/event/${eventId}`)
+        .set('Authorization', helpers.makeAuthHeader(testUser))
+        .send(badPatch)
+        .expect(400, {
+          error: { message: `Input must not be null` }
+        });
+    });
+
+    it('responds with 201 and created post when fields are correct', () => {
+      const eventId = testEvent.id;
+      const goodPatch = {
+        name: 'Changed Event',
+        fetch_id: 1337
+      };
+      return supertest(app)
+        .patch(`/api/event/${eventId}`)
+        .set('Authorization', helpers.makeAuthHeader(testUser))
+        .send(goodPatch)
+        .expect(200)
+        .expect({
+          id: testEvent.id,
+          name: goodPatch.name,
+          fetch_id: goodPatch.fetch_id,
+          user_id: testUser.id
+        });
+    });
+  });
 });
