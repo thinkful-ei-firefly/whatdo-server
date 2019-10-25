@@ -30,15 +30,47 @@ eventRouter
   })
   .post(jsonParser, async (req, res, next) => {
     try {
-      const { name, fetch_id } = req.body;
+      const {
+        name,
+        fetch_id,
+        description,
+        start_time,
+        stop_time,
+        address,
+        city_name,
+        region_name,
+        venue,
+        image,
+        url
+      } = req.body;
       const user_id = req.user.id;
-      const newEvent = { name, fetch_id, user_id };
+      const requiredFields = {
+        name,
+        fetch_id,
+        description,
+        start_time,
+        stop_time,
+        address,
+        city_name,
+        region_name,
+        venue
+      };
 
-      for (const [key, value] of Object.entries(newEvent))
+      for (const [key, value] of Object.entries(requiredFields))
         if (!value)
           return res.status(400).json({
             error: { message: `Missing '${key}' in request body` }
           });
+
+      const newEvent = { ...requiredFields, user_id };
+
+      if (image) {
+        newEvent.image = image;
+      }
+
+      if (url) {
+        newEvent.url = url;
+      }
 
       const post = await EventService.postEvent(req.app.get('db'), newEvent);
       res.status(201).json(post);
@@ -81,23 +113,50 @@ eventRouter
   })
   .patch(jsonParser, async (req, res, next) => {
     try {
-      const { name, fetch_id } = req.body;
+      const {
+        name,
+        fetch_id,
+        description,
+        start_time,
+        stop_time,
+        address,
+        city_name,
+        region_name,
+        venue,
+        image,
+        url
+      } = req.body;
       const user_id = req.user.id;
+      const patchFields = {
+        name,
+        fetch_id,
+        description,
+        start_time,
+        stop_time,
+        address,
+        city_name,
+        region_name,
+        venue,
+        image,
+        url
+      };
       const patchedEvent = {};
 
-      if (!name && !fetch_id) {
+      let check = false;
+      for (const [key, value] of Object.entries(patchFields)) {
+        if (value) {
+          check = true;
+          patchEvent[key] = value;
+        }
+      }
+
+      if (!check) {
         return res.status(400).json({
           error: { message: `Input must not be null` }
         });
       }
 
-      if (name) {
-        patchedEvent.name = name;
-      }
-
-      if (fetch_id) {
-        patchedEvent.fetch_id = fetch_id;
-      }
+      patchedEvent.user_id = user_id;
 
       const patch = await EventService.patchEvent(
         req.app.get('db'),
