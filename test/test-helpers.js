@@ -34,31 +34,81 @@ function makeEvents(user) {
       id: 1,
       name: 'event 1',
       fetch_id: 1,
-      user_id: user.id
+      user_id: user.id,
+      description: 'Test new description',
+      start_time: '1999-01-08T04:05:06.000Z',
+      stop_time: '1999-01-08T06:05:06.000Z',
+      address: '123 New Test St',
+      city_name: 'Testville',
+      region_name: 'Testing County',
+      venue: 'Test Music Hall',
+      image: 'shorturl.at/ajIMQ',
+      url:
+        'https://www.visitphilly.com/articles/philadelphia/fall-harvest-festivals/'
     },
     {
       id: 2,
       name: 'event 2',
       fetch_id: 1,
-      user_id: user.id
+      user_id: user.id,
+      description: 'Test new description',
+      start_time: '1999-01-08T04:05:06.000Z',
+      stop_time: '1999-01-08T06:05:06.000Z',
+      address: '123 New Test St',
+      city_name: 'Testville',
+      region_name: 'Testing County',
+      venue: 'Test Music Hall',
+      image: 'shorturl.at/ajIMQ',
+      url:
+        'https://www.visitphilly.com/articles/philadelphia/fall-harvest-festivals/'
     },
     {
       id: 3,
       name: 'event 3',
       fetch_id: 1,
-      user_id: user.id
+      user_id: user.id,
+      description: 'Test new description',
+      start_time: '1999-01-08T04:05:06.000Z',
+      stop_time: '1999-01-08T06:05:06.000Z',
+      address: '123 New Test St',
+      city_name: 'Testville',
+      region_name: 'Testing County',
+      venue: 'Test Music Hall',
+      image: 'shorturl.at/ajIMQ',
+      url:
+        'https://www.visitphilly.com/articles/philadelphia/fall-harvest-festivals/'
     },
     {
       id: 4,
       name: 'event 4',
       fetch_id: 1,
-      user_id: user.id
+      user_id: user.id,
+      description: 'Test new description',
+      start_time: '1999-01-08T04:05:06.000Z',
+      stop_time: '1999-01-08T06:05:06.000Z',
+      address: '123 New Test St',
+      city_name: 'Testville',
+      region_name: 'Testing County',
+      venue: 'Test Music Hall',
+      image: 'shorturl.at/ajIMQ',
+      url:
+        'https://www.visitphilly.com/articles/philadelphia/fall-harvest-festivals/'
     },
     {
       id: 5,
       name: 'event 5',
       fetch_id: 1,
-      user_id: user.id
+      user_id: user.id,
+      description: 'Test new description',
+      start_time: '1999-01-08T04:05:06.000Z',
+      stop_time: '1999-01-08T06:05:06.000Z',
+      address: '123 New Test St',
+      city_name: 'Testville',
+      region_name: 'Testing County',
+      venue: 'Test Music Hall',
+      image: 'shorturl.at/ajIMQ',
+      url:
+        'https://www.visitphilly.com/articles/philadelphia/fall-harvest-festivals/'
     }
   ];
 

@@ -1,7 +1,7 @@
 const app = require('../src/app');
 const helpers = require('./test-helpers');
 
-describe.only('Event Endpoints', function() {
+describe('Event Endpoints', function() {
   let db;
 
   const testUsers = helpers.makeUsersArray();
@@ -49,12 +49,29 @@ describe.only('Event Endpoints', function() {
       return helpers.seedUsersEvents(db, testUsers, testEvents);
     });
 
-    const requiredFields = ['name', 'fetch_id'];
+    const requiredFields = [
+      'name',
+      'fetch_id',
+      'description',
+      'start_time',
+      'stop_time',
+      'address',
+      'city_name',
+      'region_name',
+      'venue'
+    ];
 
     requiredFields.forEach(field => {
       const newEvent = {
         name: 'Test new event',
-        fetch_id: 12345
+        fetch_id: 12345,
+        description: 'Test new description',
+        start_time: '1999-01-08 04:05:06',
+        stop_time: '1999-01-08 06:05:06',
+        address: '123 New Test St',
+        city_name: 'Testville',
+        region_name: 'Testing County',
+        venue: 'Test Music Hall'
       };
 
       it(`responds with 400 and an error message when the '${field}' is missing`, () => {
@@ -72,8 +89,15 @@ describe.only('Event Endpoints', function() {
 
     it('responds with 201 and created post when fields are correct', () => {
       const correctPostBody = {
-        name: 'New Event',
-        fetch_id: 12345
+        name: 'Test new event',
+        fetch_id: 12345,
+        description: 'Test new description',
+        start_time: '1999-01-08T04:05:06.000Z',
+        stop_time: '1999-01-08T06:05:06.000Z',
+        address: '123 New Test St',
+        city_name: 'Testville',
+        region_name: 'Testing County',
+        venue: 'Test Music Hall'
       };
       return supertest(app)
         .post('/api/event')
@@ -84,7 +108,16 @@ describe.only('Event Endpoints', function() {
           id: testEvents.length + 1,
           name: correctPostBody.name,
           fetch_id: correctPostBody.fetch_id,
-          user_id: testUser.id
+          user_id: testUser.id,
+          description: correctPostBody.description,
+          start_time: correctPostBody.start_time,
+          stop_time: correctPostBody.stop_time,
+          address: correctPostBody.address,
+          city_name: correctPostBody.city_name,
+          region_name: correctPostBody.region_name,
+          venue: correctPostBody.venue,
+          image: null,
+          url: null
         });
     });
   });
@@ -160,7 +193,16 @@ describe.only('Event Endpoints', function() {
           id: testEvent.id,
           name: goodPatch.name,
           fetch_id: goodPatch.fetch_id,
-          user_id: testUser.id
+          user_id: testUser.id,
+          description: testEvent.description,
+          start_time: testEvent.start_time,
+          stop_time: testEvent.stop_time,
+          address: testEvent.address,
+          city_name: testEvent.city_name,
+          region_name: testEvent.region_name,
+          venue: testEvent.venue,
+          image: testEvent.image,
+          url: testEvent.url
         });
     });
   });

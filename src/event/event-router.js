@@ -146,7 +146,7 @@ eventRouter
       for (const [key, value] of Object.entries(patchFields)) {
         if (value) {
           check = true;
-          patchEvent[key] = value;
+          patchedEvent[key] = value;
         }
       }
 
