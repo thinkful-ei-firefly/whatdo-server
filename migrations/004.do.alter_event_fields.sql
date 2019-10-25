@@ -1,4 +1,4 @@
-ALTER TABLE "event"
+ALTER TABLE event
       ADD COLUMN description TEXT,
       ADD COLUMN start_time DATE NOT NULL,
       ADD COLUMN stop_time DATE NOT NULL,
