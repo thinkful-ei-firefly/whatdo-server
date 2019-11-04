@@ -64,7 +64,7 @@ describe('Event Endpoints', function() {
     requiredFields.forEach(field => {
       const newEvent = {
         name: 'Test new event',
-        fetch_id: 12345,
+        fetch_id: '12345',
         description: 'Test new description',
         start_time: '1999-01-08 04:05:06',
         stop_time: '1999-01-08 06:05:06',
@@ -90,7 +90,7 @@ describe('Event Endpoints', function() {
     it('responds with 201 and created post when fields are correct', () => {
       const correctPostBody = {
         name: 'Test new event',
-        fetch_id: 12345,
+        fetch_id: '12345',
         description: 'Test new description',
         start_time: '1999-01-08T04:05:06.000Z',
         stop_time: '1999-01-08T06:05:06.000Z',
@@ -182,7 +182,7 @@ describe('Event Endpoints', function() {
       const eventId = testEvent.id;
       const goodPatch = {
         name: 'Changed Event',
-        fetch_id: 1337
+        fetch_id: '1337'
       };
       return supertest(app)
         .patch(`/api/event/${eventId}`)

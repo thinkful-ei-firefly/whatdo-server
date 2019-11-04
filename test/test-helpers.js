@@ -33,7 +33,7 @@ function makeEvents(user) {
     {
       id: 1,
       name: 'event 1',
-      fetch_id: 1,
+      fetch_id: '1',
       user_id: user.id,
       description: 'Test new description',
       start_time: '1999-01-08T04:05:06.000Z',
@@ -49,7 +49,7 @@ function makeEvents(user) {
     {
       id: 2,
       name: 'event 2',
-      fetch_id: 1,
+      fetch_id: '2',
       user_id: user.id,
       description: 'Test new description',
       start_time: '1999-01-08T04:05:06.000Z',
@@ -65,7 +65,7 @@ function makeEvents(user) {
     {
       id: 3,
       name: 'event 3',
-      fetch_id: 1,
+      fetch_id: '3',
       user_id: user.id,
       description: 'Test new description',
       start_time: '1999-01-08T04:05:06.000Z',
@@ -81,7 +81,7 @@ function makeEvents(user) {
     {
       id: 4,
       name: 'event 4',
-      fetch_id: 1,
+      fetch_id: '4',
       user_id: user.id,
       description: 'Test new description',
       start_time: '1999-01-08T04:05:06.000Z',
@@ -97,7 +97,7 @@ function makeEvents(user) {
     {
       id: 5,
       name: 'event 5',
-      fetch_id: 1,
+      fetch_id: '5',
       user_id: user.id,
       description: 'Test new description',
       start_time: '1999-01-08T04:05:06.000Z',
