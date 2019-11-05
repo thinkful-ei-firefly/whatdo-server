@@ -1,5 +1,11 @@
 # whatDO API
 
+Created by:  
+Ahmed Abdulmannan  
+Jessica Doyle  
+Cody Oberholtzer  
+Ben Rosen  
+
 ## Live Link
 
 The API is deployed to Heroku [here](https://thinkful-whatdo.herokuapp.com/).
@@ -27,19 +33,19 @@ To test out the app right away, log in using the demo credentials:
 
 ## Endpoints
 
-### /User
+### /user
 
 1. `POST /api/user`
 
 Verifies input and creates a new account if valid.
 
-### /Auth
+### /auth
 
 1. `POST /api/auth/token`
 
 Verifies credentials and returns a JSON Web Token if valid.
 
-### /Event
+### /event
 
 1. `GET /api/event`
 
