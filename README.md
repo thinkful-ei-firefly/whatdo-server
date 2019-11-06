@@ -9,9 +9,9 @@
 
 ## Links
 
-- [whatDO Live API](https://thinkful-whatdo.herokuapp.com/).
+- [whatDO Live API](https://thinkful-whatdo.herokuapp.com/)
 - [whatDO Live Client](https://whatdo.now.sh/)
-- [Client Repo](https://github.com/thinkful-ei-firefly/whatdo-client).
+- [Client Repo](https://github.com/thinkful-ei-firefly/whatdo-client)
 
 ## App Description
 
